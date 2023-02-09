@@ -1,0 +1,5 @@
+{
+  "AppSettings": {
+    "ConnectionString": "Host=127.0.0.1;Username=dbo;Password=;Database=DI.TEST"
+  }
+} 
