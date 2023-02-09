@@ -1,5 +1,5 @@
 {
   "AppSettings": {
-    "ConnectionString": "Host=127.0.0.1;Username=dbo;Password=;Database=DI.TEST"
+    "ConnectionString": "Data Source=MANOWAR-PC;Initial Catalog=DI.TEST;Integrated Security=SSPI;TrustServerCertificate=True"
   }
 } 

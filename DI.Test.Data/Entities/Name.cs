@@ -6,7 +6,7 @@ namespace DI.Test.Data.Entities
     [Owned]
     public partial class Name
     {
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [Required]
         public string First { get; set; }

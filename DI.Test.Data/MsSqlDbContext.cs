@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DI.Test.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace DI.Test.Data
@@ -6,6 +7,8 @@ namespace DI.Test.Data
     public class MsSqlDbContext : DbContext
     {
         private static readonly AppSettings appSettings;
+
+        public DbSet<User> Users { get; set; }
                      
         static MsSqlDbContext()
         {
@@ -15,7 +18,7 @@ namespace DI.Test.Data
             try
             {
                 _configurationRoot = new ConfigurationBuilder()
-                .AddJsonFile("DI.Text.Data.AppSettings.json")
+                .AddJsonFile("DI.Test.Data.AppSettings.json")
                 .Build();
             }
             catch (Exception ex)
@@ -41,6 +44,37 @@ namespace DI.Test.Data
         {
             optionsBuilder.UseSqlServer(
                 GetConnectionString(), b => b.MigrationsAssembly("DI.Test.Data"));
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+
+            modelBuilder.Entity<User>().OwnsOne(p => p.Name);
+            modelBuilder.Entity<User>().OwnsOne(p => p.Location);            
+            modelBuilder.Entity<User>().OwnsOne(p => p.Login);
+            modelBuilder.Entity<User>().OwnsOne(p => p.Dob);
+            modelBuilder.Entity<User>().OwnsOne(p => p.Registered);
+            modelBuilder.Entity<User>().OwnsOne(p => p.UserId);
+            modelBuilder.Entity<User>().OwnsOne(p => p.Picture);
+
+            /*
+            modelBuilder.Entity<Location>().OwnsOne(p => p.Street);
+            modelBuilder.Entity<Location>().OwnsOne(p => p.Coordinates);
+            modelBuilder.Entity<Location>().OwnsOne(p => p.Timezone);
+
+            modelBuilder.Entity<Picture>().OwnsOne(p => p.Large);
+            modelBuilder.Entity<Picture>().OwnsOne(p => p.Medium);
+            modelBuilder.Entity<Picture>().OwnsOne(p => p.Thumbnail);
+            */
+        }
+
+        public void DetachAllEntities()
+        {
+            this.ChangeTracker.Entries().ToList()
+                .ForEach(x => x.State = EntityState.Detached);
         }
     }
 }

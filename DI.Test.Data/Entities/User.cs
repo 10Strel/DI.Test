@@ -10,11 +10,9 @@ namespace DI.Test.Data.Entities
 
         [Required]
         public string Gender { get; set; }
-
-        [Required]
+        
         public Name Name { get; set; }
-
-        [Required]
+        
         public Location Location { get; set; }
 
         public string Email { get; set; }

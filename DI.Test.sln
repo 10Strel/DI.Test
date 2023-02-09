@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Test.Data", "DI.Test.Data\DI.Test.Data.csproj", "{F5424E2B-4A3E-4883-A66F-9B032FE5E781}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Test.Console", "DI.Test.Console\DI.Test.Console.csproj", "{68FA4E4A-9E28-4186-A75A-39F6E5CB4CDD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F5424E2B-4A3E-4883-A66F-9B032FE5E781} = {F5424E2B-4A3E-4883-A66F-9B032FE5E781}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D20833B-06AB-4F5F-B99F-B7E22023B9ED}"
 	ProjectSection(SolutionItems) = preProject
