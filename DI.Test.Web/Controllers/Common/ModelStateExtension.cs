@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace DI.Test.Web.Controllers
+namespace DI.Test.Web.Controllers.Common
 {
     internal static class ModelStateExtension
     {

@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace DI.Test.Web.Controllers
+namespace DI.Test.Web.Controllers.Common
 {
     public abstract class BaseResponse
     {
@@ -21,7 +21,7 @@ namespace DI.Test.Web.Controllers
         {
             _serializeOptions = new JsonSerializerOptions
             {
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All)
+                Encoder = JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All)
             };
         }
 
@@ -41,7 +41,7 @@ namespace DI.Test.Web.Controllers
 
         public ResponseSuccess(string message) : base()
         {
-            this._message = message;
+            _message = message;
 
             Json = $"[\"{_message}\"]";
         }
@@ -54,8 +54,8 @@ namespace DI.Test.Web.Controllers
 
         public ResponseError(string key, string message) : base()
         {
-            this._key = key;
-            this._message = message;
+            _key = key;
+            _message = message;
 
             Json = $"\"{_key}\":[\"{_message}\"]";
         }
@@ -65,7 +65,7 @@ namespace DI.Test.Web.Controllers
     {
         public ResponseErrorList(List<ResponseError> list)
         {
-            this.AddRange(list);
+            AddRange(list);
         }
 
         public string GetJson => $"{{ {string.Join(',', this.Select(s => s.Json))} }}";
@@ -79,12 +79,12 @@ namespace DI.Test.Web.Controllers
 
         public string ResponseObject => _responseObject;
 
-        public bool Success => ((int)_status >= 200 && (int)_status <= 299);
+        public bool Success => (int)_status >= 200 && (int)_status <= 299;
 
         public JsonResponse(string responseObject, HttpStatusCode status)
         {
-            this._responseObject = responseObject;
-            this._status = status;
+            _responseObject = responseObject;
+            _status = status;
         }
     }
 

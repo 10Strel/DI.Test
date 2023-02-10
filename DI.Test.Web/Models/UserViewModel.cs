@@ -14,7 +14,7 @@ namespace DI.Test.Web.Models
 
         public DateTime? DateBorn { get; set; }
 
-        public byte[]? Image { get; set; }
+        public string ImageUrl { get; set; }
 
         public UserViewModel() { }
 
@@ -28,7 +28,7 @@ namespace DI.Test.Web.Models
             this.First = user.Name.First;
             this.Last = user.Name.Last;
             this.DateBorn = user.DoB.Date;
-            this.Image = user.Picture.Large.Image;
+            this.ImageUrl = user.Picture.Large.Url;
         }
 
         public string Serialize(JsonSerializerOptions options)

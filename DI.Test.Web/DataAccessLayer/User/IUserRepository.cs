@@ -7,9 +7,9 @@ namespace DI.Test.Web.DataAccessLayer.User
         IQueryable<UserViewModel> GetAll();
 
         PagedList<UserViewModel> GetAll(QueryOptions queryOptions);
-        
+
         bool Find(int id, out UserViewModel? item);
 
-        bool Exists(int id);        
+        bool Exists(int id);
     }
 }

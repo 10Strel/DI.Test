@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using DI.Test.Data;
+﻿using DI.Test.Data;
 using DI.Test.Web.Models.Pagination;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace DI.Test.Web.DataAccessLayer
@@ -19,22 +19,22 @@ namespace DI.Test.Web.DataAccessLayer
         {
             this.dbContext = dbContext;
         }
-        
+
         public delegate object ConstructorDelegate(params object[] args);
 
         public static ConstructorDelegate CreateConstructor(Type type, params Type[] parameters)
-        {            
+        {
             var constructorInfo = type.GetConstructor(parameters);
-         
+
             var paramExpr = Expression.Parameter(typeof(Object[]));
-            
-            var constructorParameters = parameters.Select((paramType, index) =>                
-                Expression.Convert(                    
+
+            var constructorParameters = parameters.Select((paramType, index) =>
+                Expression.Convert(
                     Expression.ArrayAccess(
                         paramExpr,
                         Expression.Constant(index)),
                     paramType)).ToArray();
-            
+
             var body = Expression.New(constructorInfo, constructorParameters);
             var constructor = Expression.Lambda<ConstructorDelegate>(body, paramExpr);
 
@@ -81,19 +81,7 @@ namespace DI.Test.Web.DataAccessLayer
             TEntity item = DbSet.Find(id);
             return item != null;
         }
-
-        public void Save()
-        {
-            dbContext.SaveChanges();
-            dbContext.DetachAllEntities();
-        }
-
-        public void Save(out int cntAffected)
-        {
-            cntAffected = dbContext.SaveChanges();
-            dbContext.DetachAllEntities();
-        }
-
+        
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -111,5 +99,5 @@ namespace DI.Test.Web.DataAccessLayer
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-    }    
+    }
 }

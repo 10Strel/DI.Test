@@ -1,6 +1,6 @@
-﻿namespace DI.Test.Web.Controllers
+﻿namespace DI.Test.Web.Controllers.Common
 {
-    public static class Common
+    public static class CommonMethods
     {
         public static bool IntPositiveTryParse(string idStr, out int idVerified)
         {

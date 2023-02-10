@@ -4,7 +4,7 @@ using ViewModel = DI.Test.Web.Models.UserViewModel;
 
 namespace DI.Test.Web.DataAccessLayer.User
 {
-    public class UserRepository: BaseMsSqlRepository<Entity, ViewModel>, IUserRepository<ViewModel>
+    public class UserRepository : BaseMsSqlRepository<Entity, ViewModel>, IUserRepository<ViewModel>
     {
         public UserRepository(MsSqlDbContext dbContext) : base(dbContext) { }
 
@@ -23,6 +23,6 @@ namespace DI.Test.Web.DataAccessLayer.User
         public bool Exists(int id)
         {
             return ExistsEntity(id);
-        }        
+        }
     }
 }

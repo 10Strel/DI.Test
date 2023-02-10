@@ -9,7 +9,7 @@ namespace DI.Test.Data
         private static readonly AppSettings appSettings;
 
         public DbSet<User> Users { get; set; }
-                     
+
         static MsSqlDbContext()
         {
             appSettings = new AppSettings();
@@ -35,7 +35,7 @@ namespace DI.Test.Data
         {
             return appSettings.ConnectionString;
         }
-    
+
         public MsSqlDbContext() : base() { }
 
         public MsSqlDbContext(DbContextOptions<MsSqlDbContext> options) : base(options) { }
@@ -43,7 +43,8 @@ namespace DI.Test.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                GetConnectionString(), b => b.MigrationsAssembly("DI.Test.Data"));
+                GetConnectionString(),
+                b => { b.MigrationsAssembly("DI.Test.Data"); b.CommandTimeout(120); });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -53,12 +54,12 @@ namespace DI.Test.Data
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
             modelBuilder.Entity<User>().OwnsOne(p => p.Name);
-            modelBuilder.Entity<User>().OwnsOne(p => p.Location);            
+            modelBuilder.Entity<User>().OwnsOne(p => p.Location);
             modelBuilder.Entity<User>().OwnsOne(p => p.Login);
             modelBuilder.Entity<User>().OwnsOne(p => p.DoB);
             modelBuilder.Entity<User>().OwnsOne(p => p.Registered);
             modelBuilder.Entity<User>().OwnsOne(p => p.UserId);
-            modelBuilder.Entity<User>().OwnsOne(p => p.Picture);           
+            modelBuilder.Entity<User>().OwnsOne(p => p.Picture);
         }
 
         public void DetachAllEntities()

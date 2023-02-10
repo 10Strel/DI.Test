@@ -6,17 +6,17 @@ namespace DI.Test.Console
     public class RandomUserService
     {
         private static readonly HttpClient httpClient;
-
+        
         static RandomUserService()
         {
             httpClient = new HttpClient();
         }
 
-        public static List<User> GetRandomUsers()
+        public static List<User> GetRandomUsers(int countUsers)
         {
             try
             {
-                var serviceRequestResult = GetServiceRequest();
+                var serviceRequestResult = GetServiceRequest(countUsers);
 
                 ServiceObject serviceObject = JsonConvert.DeserializeObject<ServiceObject>(value: serviceRequestResult.Result);
 
@@ -25,9 +25,9 @@ namespace DI.Test.Console
 
                 return serviceObject?.Users;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("An error occurred during the operation. Please see inner exception.", ex);
+                throw;
             }
         }
 
@@ -36,9 +36,9 @@ namespace DI.Test.Console
             return await httpClient.GetByteArrayAsync(url);
         }
 
-        private async static Task<string> GetServiceRequest()
+        private async static Task<string> GetServiceRequest(int countUsers)
         {
-            using HttpResponseMessage response = await httpClient.GetAsync("https://randomuser.me/api/?&results=1");
+            using HttpResponseMessage response = await httpClient.GetAsync($"https://randomuser.me/api/?&results={countUsers}");
 
             response.EnsureSuccessStatusCode();
 
