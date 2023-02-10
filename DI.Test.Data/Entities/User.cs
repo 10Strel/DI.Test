@@ -7,8 +7,7 @@ namespace DI.Test.Data.Entities
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        [Required]
+        
         public string Gender { get; set; }
         
         public Name Name { get; set; }
@@ -19,7 +18,7 @@ namespace DI.Test.Data.Entities
 
         public Login Login { get; set; }
 
-        public DateValue Dob { get; set; }
+        public DateValue DoB { get; set; }
 
         public DateValue Registered { get; set; }
 

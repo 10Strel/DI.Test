@@ -55,20 +55,10 @@ namespace DI.Test.Data
             modelBuilder.Entity<User>().OwnsOne(p => p.Name);
             modelBuilder.Entity<User>().OwnsOne(p => p.Location);            
             modelBuilder.Entity<User>().OwnsOne(p => p.Login);
-            modelBuilder.Entity<User>().OwnsOne(p => p.Dob);
+            modelBuilder.Entity<User>().OwnsOne(p => p.DoB);
             modelBuilder.Entity<User>().OwnsOne(p => p.Registered);
             modelBuilder.Entity<User>().OwnsOne(p => p.UserId);
-            modelBuilder.Entity<User>().OwnsOne(p => p.Picture);
-
-            /*
-            modelBuilder.Entity<Location>().OwnsOne(p => p.Street);
-            modelBuilder.Entity<Location>().OwnsOne(p => p.Coordinates);
-            modelBuilder.Entity<Location>().OwnsOne(p => p.Timezone);
-
-            modelBuilder.Entity<Picture>().OwnsOne(p => p.Large);
-            modelBuilder.Entity<Picture>().OwnsOne(p => p.Medium);
-            modelBuilder.Entity<Picture>().OwnsOne(p => p.Thumbnail);
-            */
+            modelBuilder.Entity<User>().OwnsOne(p => p.Picture);           
         }
 
         public void DetachAllEntities()

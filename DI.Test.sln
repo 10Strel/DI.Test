@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Test.Web", "DI.Test.Web\DI.Test.Web.csproj", "{94C29AF5-3C8D-44A9-8948-AAEEECF2F74D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DI.Test.Web", "DI.Test.Web\DI.Test.Web.csproj", "{94C29AF5-3C8D-44A9-8948-AAEEECF2F74D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Test.Data", "DI.Test.Data\DI.Test.Data.csproj", "{F5424E2B-4A3E-4883-A66F-9B032FE5E781}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DI.Test.Data", "DI.Test.Data\DI.Test.Data.csproj", "{F5424E2B-4A3E-4883-A66F-9B032FE5E781}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Test.Console", "DI.Test.Console\DI.Test.Console.csproj", "{68FA4E4A-9E28-4186-A75A-39F6E5CB4CDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DI.Test.Console", "DI.Test.Console\DI.Test.Console.csproj", "{68FA4E4A-9E28-4186-A75A-39F6E5CB4CDD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F5424E2B-4A3E-4883-A66F-9B032FE5E781} = {F5424E2B-4A3E-4883-A66F-9B032FE5E781}
 	EndProjectSection
