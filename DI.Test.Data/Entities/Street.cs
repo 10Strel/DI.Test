@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
 namespace DI.Test.Data.Entities
 {
@@ -8,7 +7,6 @@ namespace DI.Test.Data.Entities
     {
         public string? Number { get; set; }
 
-        [Required]
         public string Name { get; set; }
     }
 }

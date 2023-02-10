@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
 namespace DI.Test.Data.Entities
 {
@@ -7,7 +6,7 @@ namespace DI.Test.Data.Entities
     public partial class PictureValue
     {
         public string Url { get; set; }
-        
+
         public byte[]? Image { get; set; }
     }
 }

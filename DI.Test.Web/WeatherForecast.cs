@@ -1,5 +1,6 @@
 namespace DI.Test.Web
 {
+    /*
     public class WeatherForecast
     {
         public DateTime Date { get; set; }
@@ -10,4 +11,5 @@ namespace DI.Test.Web
 
         public string? Summary { get; set; }
     }
+    */
 }

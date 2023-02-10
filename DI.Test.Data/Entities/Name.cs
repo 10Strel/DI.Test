@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
 namespace DI.Test.Data.Entities
 {
@@ -8,10 +7,8 @@ namespace DI.Test.Data.Entities
     {
         public string? Title { get; set; }
 
-        [Required]
         public string First { get; set; }
 
-        [Required]
         public string Last { get; set; }
     }
 }

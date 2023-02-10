@@ -7,11 +7,11 @@ namespace DI.Test.Data.Entities
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        
-        public string Gender { get; set; }
-        
+
+        public string? Gender { get; set; }
+
         public Name Name { get; set; }
-        
+
         public Location Location { get; set; }
 
         public string Email { get; set; }
@@ -22,14 +22,14 @@ namespace DI.Test.Data.Entities
 
         public DateValue Registered { get; set; }
 
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
-        public string Cell { get; set; }
+        public string? Cell { get; set; }
 
         public IdValue UserId { get; set; }
 
         public Picture Picture { get; set; }
 
-        public string Nat { get; set; }
+        public string? Nat { get; set; }
     }
 }

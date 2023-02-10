@@ -27,9 +27,10 @@ namespace DI.Test.Console
                 }
 
                 dbContext.SaveChanges();
+                dbContext.DetachAllEntities();
             }
         }
-        
+
         private static Data.Entities.User GetDbUser(User user)
         {
             Data.Entities.User DbUser = new();
@@ -115,12 +116,14 @@ namespace DI.Test.Console
 
                     Medium = new()
                     {
-                        Url = user.Picture.Medium
+                        Url = user.Picture.Medium,
+                        Image = RandomUserService.GetImage(user.Picture.Medium).Result
                     },
 
                     Thumbnail = new()
                     {
-                        Url = user.Picture.Thumbnail
+                        Url = user.Picture.Thumbnail,
+                        Image = RandomUserService.GetImage(user.Picture.Thumbnail).Result
                     }
                 };
 
